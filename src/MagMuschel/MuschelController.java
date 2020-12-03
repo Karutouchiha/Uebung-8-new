@@ -2,6 +2,7 @@ package MagMuschel;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -17,7 +18,7 @@ public class MuschelController {
     public void Question(){
         String s = txt_Question.getText();
         if (s.contains("Hallo")){
-           print("Es ist schön zu wissen, das es noch anständige Leute gibt. Hallo Mensch!");
+           print("Es ist schön zu wissen, das es noch anständige Leute gibt.\nHallo Mensch!");
         }
         else if (s.contains(".")){
             print("Sind Sie sicher das das eine Frage ist?");
@@ -30,25 +31,25 @@ public class MuschelController {
                 print(getRespond(5));
              }
              else if (s.contains("Undertale")){
-                 print("Undertale ist ein tolles Spiel.");
+                 print(getRespond(7));
              }
-             else if (s.contains("Tag")){
-
+             else if (s.contains("Montag")){
+                print(getRespond(-4));
              }
              else {
                  print(getRespond(0));
              }
          }
         else {
-            print("Tut mir Leid aber Ich habe keine Frage gefunden.\n Bitte benutze ein '?'.");
+            print("Tut mir Leid aber Ich habe keine Frage gefunden.\nBitte benutze ein '?'.");
         }
     }
     public String getRespond(int bonus){
         Random random = new Random();
-        int r = random.nextInt(19);
+        int r = random.nextInt(19)+bonus;
         String respons = "Hello";
         //no
-        if (r==0){
+        if (r<=0){
             respons = "Very doubtful.";
         }
         else if (r==1){
@@ -110,7 +111,16 @@ public class MuschelController {
         else if (r >= 19){
             respons= "It is certain.";
         }
-        
+        if (r<5){
+            txt_Answer.setFill(Color.RED);
+        }
+        else if (r<10){
+            txt_Answer.setFill(Color.ORANGE);
+        }
+        else {
+            txt_Answer.setFill(Color.GREEN);
+        }
+
 
         return respons;
     }
