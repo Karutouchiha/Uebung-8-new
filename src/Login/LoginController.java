@@ -1,6 +1,6 @@
 package Login;
 
-import MagMuschel.MagMuschelController;
+import MagMuschel.MuschelController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,7 +23,9 @@ public class LoginController implements Initializable{
     @FXML private Text txt_Error;
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {}
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -37,7 +39,7 @@ public class LoginController implements Initializable{
                 if (txt_Username.getText().equals(this.register.get(i))){
                     i++;
                     if (txt_Password.getText().equals(register.get(i))){
-                        loadScene("MagischeMuschel.fxml","Magische Muschel");
+                        loadScene("/MagMuschel/Muschel.fxml","Magische Muschel");
                     }
                 }
             }
@@ -54,19 +56,19 @@ public class LoginController implements Initializable{
     public void Register(){
         this.txt_Error.setVisible(false);
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Register/Register.fxml"));
             Parent root = loader.load();
 
             Register.RegisterController Controller = loader.getController();
             Stage nextStage = new Stage();
-            nextStage.setScene(new Scene(root, 500, 500));
+            nextStage.setScene(new Scene(root));
             Controller.setStage(nextStage);
             nextStage.setTitle("Register");
             nextStage.show();
 
             this.stage.close();
         }
-        catch (Exception ex){
+        catch (IOException ex){
             this.txt_Error.setText("Stage konnte nicht Geladen werden");
             this.txt_Error.setVisible(true);
         }
@@ -80,20 +82,21 @@ public class LoginController implements Initializable{
         register.add(Password);
     }
     public void loadScene(String s,String t){
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(MagMuschelController.class.getResource(s));
-            Parent root = fxmlLoader.load();
+        this.txt_Error.setVisible(false);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(s));
+            Parent root = loader.load();
 
-            //get controller which is connected to this fxml file
-            MagMuschelController ctrl = fxmlLoader.getController();
-            ctrl.setStage(stage);
+            MagMuschel.MuschelController Controller = loader.getController();
+            Stage nextStage = new Stage();
+            nextStage.setScene(new Scene(root));
+            Controller.setStage(nextStage);
+            nextStage.setTitle(t);
+            nextStage.show();
 
-            stage.setTitle(t);
-            stage.setScene(new Scene(root, 400, 400));
-            stage.show();
             this.stage.close();
         }
-        catch (IOException ex){
+        catch(IOException ex){
             this.txt_Error.setText("Stage konnte nicht Geladen werden");
             this.txt_Error.setVisible(true);
         }

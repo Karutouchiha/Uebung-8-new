@@ -25,8 +25,8 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username*:" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password*:" GridPane.rowIndex="2" />
-            <TextField fx:id="txt_Username" promptText="Enter your Username" GridPane.rowIndex="1" />
-            <TextField fx:id="txt_Password" prefHeight="25.0" prefWidth="102.0" promptText="Enter your Password" GridPane.rowIndex="3" />
+            <TextField fx:id="txt_Username" promptText="Enter your Username" text="Karuto" GridPane.rowIndex="1" />
+            <TextField fx:id="txt_Password" prefHeight="25.0" prefWidth="102.0" promptText="Enter your Password" text="Cisco" GridPane.rowIndex="3" />
             <Button fx:id="bt_Login" mnemonicParsing="false" onMouseClicked="#Login" prefHeight="39.0" prefWidth="129.0" text="Log in" GridPane.rowIndex="5" />
          </children>
       </GridPane>
