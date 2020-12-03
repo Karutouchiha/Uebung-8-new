@@ -1,6 +1,5 @@
 package Login;
 
-import MagMuschel.MuschelController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,7 +23,8 @@ public class LoginController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        addRegister("Karuto","Cisco");
+        addRegister("Lukas","Cisco");
     }
 
     public void setStage(Stage stage) {
@@ -35,7 +35,7 @@ public class LoginController implements Initializable{
     public void Login (){
         this.txt_Error.setVisible(false);
         if (!txt_Username.getText().equals("") && !txt_Password.getText().equals("")){
-            for (int i=0; i<register.size()/2;i=i+2) {
+            for (int i=0; i<register.size();i++) {
                 if (txt_Username.getText().equals(this.register.get(i))){
                     i++;
                     if (txt_Password.getText().equals(register.get(i))){
@@ -74,14 +74,14 @@ public class LoginController implements Initializable{
         }
     }
     public ArrayList getRegister() {
-        return register;
+        return this.register;
     }
 
     public void addRegister(String Username, String Password) {
         register.add(Username);
         register.add(Password);
     }
-    public void loadScene(String s,String t){
+    public void loadScene(String s, String t){
         this.txt_Error.setVisible(false);
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(s));
